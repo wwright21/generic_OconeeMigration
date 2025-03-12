@@ -12,9 +12,9 @@ st.set_page_config(
 )
 
 # whole page variables
-county_var = "St. Lucie"
-state_var = "Florida"
-stateAbbrev_var = "FL"
+county_var = "Oconee"
+state_var = "Georgia"
+stateAbbrev_var = "GA"
 text_color = "#36454F"
 
 # set the dashboard title
@@ -70,7 +70,7 @@ dash_variable_dict = {
         "agi_net",
         "$~s",
         "%{y:$,.0f}",
-        50000000
+        25000000
     ]
 }
 
@@ -198,10 +198,10 @@ st.markdown(
     unsafe_allow_html=True)
 
 # Define 5 Streamlit columns
-col1, col2, col3, col4, col5 = st.columns(5)
+col1, col2 = st.columns(2)
 
 # Iterate over the columns and top 5 cities
-for col, (metro, migration_total) in zip([col1, col2, col3, col4, col5], metro_rollup.items()):
+for col, (metro, migration_total) in zip([col1, col2], metro_rollup.items()):
     with col:
         # Display the metro name
         st.markdown(
@@ -293,13 +293,11 @@ st.dataframe(formatted_df)
 st.write("")
 st.write("")
 st.write("")
-col1, col2 = st.columns([4, 1])
-col1.markdown(
+st.markdown(
     f"""
     For questions about this data explorer or the source data, please contact Will Wright by clicking <a href="mailto:williamcwrightjr@gmail.com?subject=Question about {county_var} County Migration Dashboard" style="text-decoration: none; color: #FF6F61;"><b>here</b>.</a> 
     """,
     unsafe_allow_html=True)
-col2.image('Assets/kolter2.png', width=100)
 
 # the custom CSS lives here:
 hide_default_format = """
